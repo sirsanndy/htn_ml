@@ -19,6 +19,7 @@ from modules.concat_data import concat_data
 from modules.fit_scaler import fit_scaler
 from modules.transform_scaler import transform_scaler
 from modules.preprocess_data import preprocess_data
+from models.dummy_model import dummy_model
 
 def main():
     data = read_data('Hypertension_dataset.sav')
@@ -50,6 +51,8 @@ def main():
     X_train_clean = transform_scaler(X_train_concat, scaler)
     X_valid_clean = preprocess_data(X_valid, num_columns, cat_columns, scaler)
     X_test_clean = preprocess_data(X_test, num_columns, cat_columns, scaler)
+    
+    dummy_model(X_train_clean, y_train, X_valid_clean)
     
 if __name__ == "__main__":
     main()
